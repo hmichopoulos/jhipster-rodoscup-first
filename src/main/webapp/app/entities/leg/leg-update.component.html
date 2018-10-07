@@ -1,0 +1,50 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-leg-heading">Create or edit a Leg</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!leg.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="leg.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                        [(ngModel)]="leg.name" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_day">Day</label>
+                    <div class="d-flex">
+                        <input id="field_day" type="datetime-local" class="form-control" name="day" [(ngModel)]="day"
+                        />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_championship">Championship</label>
+                    <select class="form-control" id="field_championship" name="championship" [(ngModel)]="leg.championship" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="championshipOption.id === leg.championship?.id ? leg.championship : championshipOption" *ngFor="let championshipOption of championships; trackBy: trackChampionshipById">{{championshipOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_raceResult">Race Result</label>
+                    <select class="form-control" id="field_raceResult" name="raceResult" [(ngModel)]="leg.raceResult" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="raceResultOption.id === leg.raceResult?.id ? leg.raceResult : raceResultOption" *ngFor="let raceResultOption of raceresults; trackBy: trackRaceResultById">{{raceResultOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
