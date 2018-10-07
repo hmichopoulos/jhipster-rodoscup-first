@@ -1,0 +1,39 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="yachtCategory">
+            <h2><span>Yacht Category</span> {{yachtCategory.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Name</span></dt>
+                <dd>
+                    <span>{{yachtCategory.name}}</span>
+                </dd>
+                <dt><span>Championship</span></dt>
+                <dd>
+                    <div *ngIf="yachtCategory.championship">
+                        <a [routerLink]="['/championship', yachtCategory.championship?.id, 'view']">{{yachtCategory.championship?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Race Result</span></dt>
+                <dd>
+                    <div *ngIf="yachtCategory.raceResult">
+                        <a [routerLink]="['/race-result', yachtCategory.raceResult?.id, 'view']">{{yachtCategory.raceResult?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/yacht-category', yachtCategory.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
