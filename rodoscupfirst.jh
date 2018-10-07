@@ -1,0 +1,30 @@
+entity Championship {
+	year Long
+}
+
+entity Leg {
+	name String
+    day	Instant
+}
+
+relationship OneToMany {
+	Championship{leg} to Leg
+}
+
+entity YachtCategory {
+	name String
+}
+
+relationship OneToMany {
+	Championship{yachtCategory} to YachtCategory
+}
+
+entity RaceResult {
+	url	String
+}
+
+relationship OneToMany {
+	RaceResult{leg} to Leg,
+    RaceResult{category} to YachtCategory
+}
+
