@@ -24,7 +24,7 @@
     "entityTableName": "race_result",
     "dto": "no",
     "pagination": "no",
-    "service": "no",
+    "service": "serviceClass",
     "jpaMetamodelFiltering": false,
     "fluentMethods": true,
     "clientRootFolder": "",
