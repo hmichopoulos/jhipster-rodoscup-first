@@ -28,3 +28,4 @@ relationship OneToMany {
     RaceResult{category} to YachtCategory
 }
 
+service RaceResult with serviceClass
