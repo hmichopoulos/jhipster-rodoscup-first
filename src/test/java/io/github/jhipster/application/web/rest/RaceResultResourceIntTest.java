@@ -4,6 +4,7 @@ import io.github.jhipster.application.RodosCupManagerApp;
 
 import io.github.jhipster.application.domain.RaceResult;
 import io.github.jhipster.application.repository.RaceResultRepository;
+import io.github.jhipster.application.service.RaceResultService;
 import io.github.jhipster.application.web.rest.errors.ExceptionTranslator;
 
 import org.junit.Before;
@@ -44,6 +45,9 @@ public class RaceResultResourceIntTest {
 
     @Autowired
     private RaceResultRepository raceResultRepository;
+    
+    @Autowired
+    private RaceResultService raceResultService;
 
     @Autowired
     private MappingJackson2HttpMessageConverter jacksonMessageConverter;
@@ -64,7 +68,7 @@ public class RaceResultResourceIntTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final RaceResultResource raceResultResource = new RaceResultResource(raceResultRepository);
+        final RaceResultResource raceResultResource = new RaceResultResource(raceResultService);
         this.restRaceResultMockMvc = MockMvcBuilders.standaloneSetup(raceResultResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
@@ -166,7 +170,7 @@ public class RaceResultResourceIntTest {
     @Transactional
     public void updateRaceResult() throws Exception {
         // Initialize the database
-        raceResultRepository.saveAndFlush(raceResult);
+        raceResultService.save(raceResult);
 
         int databaseSizeBeforeUpdate = raceResultRepository.findAll().size();
 
@@ -211,7 +215,7 @@ public class RaceResultResourceIntTest {
     @Transactional
     public void deleteRaceResult() throws Exception {
         // Initialize the database
-        raceResultRepository.saveAndFlush(raceResult);
+        raceResultService.save(raceResult);
 
         int databaseSizeBeforeDelete = raceResultRepository.findAll().size();
 
