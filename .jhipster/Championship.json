@@ -1,0 +1,32 @@
+{
+    "name": "Championship",
+    "fields": [
+        {
+            "fieldName": "year",
+            "fieldType": "Long"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "leg",
+            "otherEntityName": "leg",
+            "otherEntityRelationshipName": "championship"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "yachtCategory",
+            "otherEntityName": "yachtCategory",
+            "otherEntityRelationshipName": "championship"
+        }
+    ],
+    "changelogDate": "20181007081727",
+    "entityTableName": "championship",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

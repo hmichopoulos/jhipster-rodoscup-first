@@ -1,0 +1,32 @@
+{
+    "name": "RaceResult",
+    "fields": [
+        {
+            "fieldName": "url",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "leg",
+            "otherEntityName": "leg",
+            "otherEntityRelationshipName": "raceResult"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "category",
+            "otherEntityName": "yachtCategory",
+            "otherEntityRelationshipName": "raceResult"
+        }
+    ],
+    "changelogDate": "20181007081730",
+    "entityTableName": "race_result",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

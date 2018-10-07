@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity YachtCategory.
+    -->
+    <changeSet id="20181007081729-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="championship_id"
+                                 baseTableName="yacht_category"
+                                 constraintName="fk_yacht_category_championship_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="championship"/>
+
+        <addForeignKeyConstraint baseColumnNames="race_result_id"
+                                 baseTableName="yacht_category"
+                                 constraintName="fk_yacht_category_race_result_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="race_result"/>
+
+    </changeSet>
+</databaseChangeLog>
